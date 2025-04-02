@@ -14,10 +14,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await RegisterAccount(form);
-
+      await RegisterAccount(form);
       setForm({
         firstName: "",
         lastName: "",
@@ -25,21 +22,12 @@ const Register = () => {
         email: "",
         password: "",
         birthDate: "",
-      });
-
-      if (response) {
-        console.log("Registrazione avvenuta con successo:", response);
-      } else {
-        console.error("Errore nella registrazione!");
-      }
-    } catch (error) {
-      console.error("Errore durante la registrazione:", error);
-    }
-  };
+      })
+    };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="w-75 mx-auto py-3">
         <FloatingLabel controlId="floatingFirstName" label="Nome" className="mb-3">
           <Form.Control
             type="text"
