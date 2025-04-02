@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { RegisterAccount } from "../api";
 import { FloatingLabel, Form } from "react-bootstrap";
+import { RegisterAccount } from "../redux/actions/AccountApi";
 
 const Register = () => {
   const [form, setForm] = useState({

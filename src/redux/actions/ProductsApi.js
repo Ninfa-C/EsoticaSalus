@@ -1,8 +1,10 @@
-const CategoryUrl = "";
-const DrawerUrl = "";
+const CategoryUrl = "https://localhost:7054/api/Product/Categories";
+const DrawerUrl = "https://localhost:7054/api/Product/drawers";
+const getToken = JSON.parse(localStorage.getItem("token"))
+const authToken = `Bearer ${getToken.token}`
 
 export const getData = async (query) => {
-    let url = "";
+    let url;
     switch (query) {
         case "category":
             url = CategoryUrl;
@@ -13,21 +15,39 @@ export const getData = async (query) => {
         default:
             break;
     }
-
     try {
         const response = await fetch(`${url}`, {
             method: "GET",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json", 
+                "Authorization" : authToken          
             },
         });
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        return data.data;
-    } catch (error) {
-        console.error("Error fetching spells:", error);
-        return [];
+        return data;
+    } catch  {
+        console.error(authToken);
     }
 };
+
+const ProduUrl = "https://localhost:7054/api/Product";
+
+export const AddProduct = async (form) => {
+try {
+    const response = await fetch (ProduUrl , {
+        method : "POST",
+        headers: {
+            Authorization: authToken,
+        },
+        body: form,
+    });
+    if(response.ok){
+        console.log(response.status)
+    }
+    } catch (err) {
+        console.log(err);
+    }
+} 

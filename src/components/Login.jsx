@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { LoginAccount, SetToken } from "../api";
 import { FloatingLabel, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { LoginAccount, SetToken } from "../redux/actions/AccountApi";
 
 const Login = () => {
   const [form, setForm] = useState({

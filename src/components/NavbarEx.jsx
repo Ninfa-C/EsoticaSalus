@@ -3,10 +3,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { Logout } from '../api';
+import { Link, useNavigate } from 'react-router-dom';;
 import { NavLink } from 'react-bootstrap';
 import { useEffect } from 'react';
+import { Logout } from '../redux/actions/AccountApi';
 
 function NavbarEx() {
   const profile = useSelector(state => state.profile)
