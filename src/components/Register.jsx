@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { RegisterAccount } from "../api";
-import { FloatingLabel, Form } from "react-bootstrap"; // Assicurati di importare Bootstrap se lo stai usando
+import { FloatingLabel, Form } from "react-bootstrap";
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -16,7 +16,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await RegisterAccount(form); // Aggiunto await!
+      const response = await RegisterAccount(form);
 
       setForm({
         firstName: "",
