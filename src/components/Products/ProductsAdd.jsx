@@ -91,10 +91,8 @@ const ProductAdd = () => {
                         <Form.Label>State</Form.Label>
                         <Form.Select  value={cat.categoryId} onChange={(e) => setForm({ ...form, categoryId: e.target.value })}>
                             <option>Choose...</option>
-                            {cat && cat.map((item) => (
-                                <>
+                            {cat.length>0 && cat.map((item) => (
                                     <option value={item.id} key={item.id}>{item.name}</option>
-                                </>
                             ))}
                         </Form.Select>
                     </Form.Group>
@@ -102,10 +100,8 @@ const ProductAdd = () => {
                         <Form.Label>State</Form.Label>
                         <Form.Select value={drawer.drawerId} onChange={(e) => setForm({ ...form, drawerId: e.target.value })}>
                             <option>Choose...</option>
-                            {drawer && drawer.map((item) => (
-                                <>
+                            {drawer.length>0 && drawer.map((item) => (
                                     <option value={item.drawerId} key={item.drawerId}>{item.name} - {item.position}</option>
-                                </>
                             ))}
                         </Form.Select>
                     </Form.Group>
