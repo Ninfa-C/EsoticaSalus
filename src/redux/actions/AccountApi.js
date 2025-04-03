@@ -1,4 +1,3 @@
-
 const Url = "https://localhost:7054/api/Account/register";
 
 export const RegisterAccount = async (form) => {
@@ -21,7 +20,9 @@ export const RegisterAccount = async (form) => {
         return null;
     }
 };
+
 import { jwtDecode } from "jwt-decode";
+
 
 const LoginUrl = "https://localhost:7054/api/Account/login";
 
@@ -64,7 +65,6 @@ export const SetToken = () =>{
         });
     }
 }
-
 
 export const Logout = ()=>{
     return async (dispatch)=>{

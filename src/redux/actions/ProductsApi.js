@@ -1,9 +1,12 @@
+import { Logout } from "./AccountApi";
+
 const CategoryUrl = "https://localhost:7054/api/Product/Categories";
 const DrawerUrl = "https://localhost:7054/api/Product/drawers";
-const getToken = JSON.parse(localStorage.getItem("token"))
-const authToken = `Bearer ${getToken.token}`
+const getToken = JSON.parse(localStorage.getItem("token"));
+const authToken = `Bearer ${getToken.token}`;
 
 export const getData = async (query) => {
+    
     let url;
     switch (query) {
         case "category":
@@ -23,7 +26,10 @@ export const getData = async (query) => {
                 "Authorization" : authToken          
             },
         });
-        if (!response.ok) {
+        if(response.status === 401){
+            Logout()
+        }
+        else if(!response.ok) {
             throw new Error("Network response was not ok");
         }
         const data = await response.json();
