@@ -54,10 +54,10 @@ try {
         },
         body: form,
     });
-    if(response.ok){
-        console.log(response.status)
+    if (response.ok) {
+      console.log(response.status);
     }
-    } catch (err) {
-        console.log(err);
-    }
-} 
+  } catch (err) {
+    console.log(err);
+  }
+};
