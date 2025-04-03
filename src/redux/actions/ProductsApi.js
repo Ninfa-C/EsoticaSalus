@@ -1,5 +1,3 @@
-import ForceLogout from "../../components/ForceLogout";
-
 const CategoryUrl = "https://localhost:7054/api/Product/Categories";
 const DrawerUrl = "https://localhost:7054/api/Product/drawers";
 
