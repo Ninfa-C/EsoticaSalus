@@ -2,9 +2,6 @@ import { Logout } from "./AccountApi";
 
 const CategoryUrl = "https://localhost:7054/api/Product/Categories";
 const DrawerUrl = "https://localhost:7054/api/Product/drawers";
-const getToken = JSON.parse(localStorage.getItem("token"));
-const authToken = getToken!=null? `Bearer ${getToken.token}` :  null;
-
 
 export const getData = async (query) => {
     let url;
@@ -40,12 +37,12 @@ export const getData = async (query) => {
 const ProduUrl = "https://localhost:7054/api/Product";
 
 export const AddProduct = async (form) => {
-    
+    const getToken2 = JSON.parse(localStorage.getItem("token"));
 try {
     const response = await fetch (ProduUrl , {
         method : "POST",
         headers: {
-            Authorization: authToken,
+            Authorization: `Bearer ${getToken2.token}` ,
         },
         body: form,
     });
