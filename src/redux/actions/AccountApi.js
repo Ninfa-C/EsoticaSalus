@@ -36,6 +36,10 @@ export const LoginAccount = async(form) => {
                 },
                 body: JSON.stringify(form),
             });
+            if(response.status === 401){
+                console.log("non autorizzato!!!!!")
+            }
+            
             if (!response.ok) {
                 throw new Error("Errore nel login. Riprova.");
             } else {

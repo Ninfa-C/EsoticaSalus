@@ -13,9 +13,11 @@ import { AutoLogout } from './components/Account/AutoLogout';
 
 
 function App() {
-  AutoLogout();
+  
+  
   return (
-<>
+<> 
+<AutoLogout/>
     <NavbarEx/>    
     <Routes>
       <Route path ='/' element = {<Homepage/> }/>

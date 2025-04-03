@@ -18,30 +18,29 @@ export const getData = async (query) => {
         default:
             break;
     }
-    try {
+    const getToken2 = JSON.parse(localStorage.getItem("token"));
+    try {        
         const response = await fetch(`${url}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json", 
-                "Authorization" : authToken          
+                "Authorization" : `Bearer ${getToken2.token}`          
             },
         });
-        if(response.status === 401){
-            Logout()
-        }
-        else if(!response.ok) {
+        if(!response.ok) {
             throw new Error("Network response was not ok");
         }
         const data = await response.json();
         return data;
     } catch  {
-        console.error(authToken);
+        console.error(getToken2.token);
     }
 };
 
 const ProduUrl = "https://localhost:7054/api/Product";
 
 export const AddProduct = async (form) => {
+    
 try {
     const response = await fetch (ProduUrl , {
         method : "POST",
