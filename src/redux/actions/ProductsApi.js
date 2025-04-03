@@ -3,10 +3,10 @@ import { Logout } from "./AccountApi";
 const CategoryUrl = "https://localhost:7054/api/Product/Categories";
 const DrawerUrl = "https://localhost:7054/api/Product/drawers";
 const getToken = JSON.parse(localStorage.getItem("token"));
-const authToken = `Bearer ${getToken.token}`;
+const authToken = getToken!=null? `Bearer ${getToken.token}` :  null;
+
 
 export const getData = async (query) => {
-    
     let url;
     switch (query) {
         case "category":
