@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import { useDispatch } from "react-redux";
 
 const initialForm ={
     name: "",
@@ -18,15 +19,29 @@ const initialForm ={
 }
 
 const ProductAdd = () => {
-    const [form, setForm] = useState(initialForm);
+    const dispatch = useDispatch()
 
+    const [form, setForm] = useState(initialForm);
     const [cat, setCat] = useState([])
     const [drawer, setDrawer] = useState([])
+    const [isLoading, setIsLoading] = useState(true);
+
     const GetDatas = async () => {
-        const data1 = await getData("category")
-        setCat(data1.categories)
-        const data2 = await getData("drawer")
-        setDrawer(data2.result);
+        setIsLoading(true)
+        //QUESTO SERVE PER ATTENDERE TUTTE LE PROMISE
+        try {
+            const [category, drawer] = await Promise.all([
+                dispatch(getData("category")),
+                dispatch(getData("drawer"))
+            ])
+            setCat(category.categories);
+            setDrawer(drawer.result);
+        } catch (error) {
+            console.log(error, "errore fetch cat e drower")
+        }
+        finally{
+            setIsLoading(false)
+        }
     }
 
     const handleSubmit = (e) => {
@@ -90,24 +105,30 @@ const ProductAdd = () => {
                     </Form.Group>
                 </Row>
                 <Row>
+                    {!isLoading && 
+                    <>
                     <Form.Group as={Col}>
                         <Form.Label>State</Form.Label>
                         <Form.Select  value={cat.categoryId} onChange={(e) => setForm({ ...form, categoryId: e.target.value })}>
                             <option>Choose...</option>
-                            {cat.length>0 && cat.map((item) => (
-                                    <option value={item.id} key={item.id}>{item.name}</option>
+                            {cat.length >0 && cat.map((item) => (
+                                <option value={item.id} key={item.id}>{item.name}</option>
                             ))}
                         </Form.Select>
+                           
                     </Form.Group>
                     <Form.Group as={Col}>
+                        
                         <Form.Label>State</Form.Label>
                         <Form.Select value={drawer.drawerId} onChange={(e) => setForm({ ...form, drawerId: e.target.value })}>
                             <option>Choose...</option>
                             {drawer.length>0 && drawer.map((item) => (
-                                    <option value={item.drawerId} key={item.drawerId}>{item.name} - {item.position}</option>
+                                <option value={item.drawerId} key={item.drawerId}>{item.name} - {item.position}</option>
                             ))}
                         </Form.Select>
                     </Form.Group>
+                            </>
+                            }
                 </Row>
 
                 <Form.Group className="mb-3" id="formGridCheckbox">

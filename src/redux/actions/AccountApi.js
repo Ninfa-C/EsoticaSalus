@@ -64,6 +64,7 @@ export const SetToken = () =>{
                 email: token.email,
                 role: token.role,
                 expire: token.exp,
+                isExpired : false,
             },
         });
     }
@@ -75,6 +76,14 @@ export const Logout = ()=>{
         dispatch({
             type: "LOGOUT",
         });
+    }
+}
+
+export const CheckToken = ()=> {
+    return async (dispatch) =>{
+        dispatch({
+            type: "CHECK_TOKEN",
+        })
     }
 }
 

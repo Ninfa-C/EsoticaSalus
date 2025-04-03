@@ -4,6 +4,7 @@ const initialState = {
     email : null,
     role : null,
     expire: null,
+    isExpired : true,
   }
 }
 
@@ -23,8 +24,20 @@ const mainReducer = (state = initialState, action) => {
               email : null,
               role : null,
               expire: null,
+              isExpired : true,
             },
           };
+
+          case "CHECK_TOKEN":
+            return{
+              ...state,
+              profile:{
+                ...state.profile,
+                isExpired : true,
+              }
+            }
+
+            
       default:
         return state;
     }
