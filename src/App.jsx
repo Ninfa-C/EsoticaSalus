@@ -16,12 +16,15 @@ import PharmaHomepage from "./components/Pharma/PharmaHomepage";
 import SendOrder from "./components/Pharma/SendOrder";
 import PetList from "./components/Pets/PetList";
 //import { jwtDecode } from "jwt-decode";
+import PetMain from "./components/Pets/PetMain";
+
 
 function App() {
   const dispatch = useDispatch();
 
   
   useEffect(() => {
+    //FUNZIONE RICHIAMATA IN ACCOUNTAPI.Js PER LA GESTIONE DELL'AUTOLOGIN
     dispatch(AutoLogin());
   }, []);
 
@@ -39,6 +42,8 @@ function App() {
         <Route path="/Account/Login" element={<Login />} />
         <Route path="/Pharmacy/Order" element={<SendOrder/>} />
         <Route path="/Pet" element={<PetList />} />
+        <Route path="/Pet/:id" element={<PetMain />} />
+       {/*  <Route path="/MedicalExam/new/:id" element={<AddMedicalExam />} /> */}
       </Routes>
       {/*qui ci metto il footer*/}
     </>
