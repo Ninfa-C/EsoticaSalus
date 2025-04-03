@@ -32,7 +32,8 @@ const logoutAccount =() =>{
             {(profile.role === "Admin" || profile.role === "Farmacista") && 
               <>
                   <Link to="/Pharmacy" className='nav-link'>Farmacia</Link>   
-                {/* <Link to="/Products/Add" className='nav-link'>Aggiungi Prodotto</Link>                 */}
+                  <Link to="/Pharmacy/Order" className='nav-link'>Conferma ordine</Link>  
+                  {/*<Link to="/Products/Add" className='nav-link'>Aggiungi Prodotto</Link>*/}
               </>
             }
             {

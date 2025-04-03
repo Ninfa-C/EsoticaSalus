@@ -1,6 +1,10 @@
 import { Capsule } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
 
 const SingleProdCard = ({ product }) => {
+const dispatch  = useDispatch()
+
+
   return (
     <div className="card h-100 shadow-sm">
     <div className="position-relative">
@@ -46,7 +50,15 @@ const SingleProdCard = ({ product }) => {
           <span className="fw-bold fs-5 text-primary">
             €{product.price.toFixed(2)}
           </span>
-          <button className="btn btn-sm btn-outline-primary">
+          <button className="btn btn-sm btn-outline-primary"  onClick={() => dispatch({
+            type: "ADD_PRODUCT",
+            payload: {
+              "idProduct": product.id,
+              "quantity": 1,
+              "price" : product.price,
+              "name" : product.name              
+                  }
+              })}>
             <i className="fas fa-shopping-cart me-1"></i>
             Acquista
           </button>
