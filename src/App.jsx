@@ -12,40 +12,16 @@ import { AutoLogout } from "./components/Account/AutoLogout";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AutoLogin } from "./redux/actions/AccountApi";
-//import { jwtDecode } from "jwt-decode";
+import PetMain from "./components/Pets/PetMain";
+
 
 function App() {
   const dispatch = useDispatch();
 
   
   useEffect(() => {
+    //FUNZIONE RICHIAMATA IN ACCOUNTAPI.Js PER LA GESTIONE DELL'AUTOLOGIN
     dispatch(AutoLogin());
-    /* const token = localStorage.getItem("token");
-    if (token) {
-      try {
-        const getToken = JSON.parse(token);
-        const tokenJwt = jwtDecode(getToken.token);
-
-        const currentTime = Math.floor(Date.now() / 1000);
-        if (tokenJwt.exp > currentTime) {
-          // Il token è valido
-          dispatch({
-            type: "SAVE_PROFILE",
-            payload: {
-              name: tokenJwt.name,
-              email: tokenJwt.email,
-              role: tokenJwt.role,
-              expire: tokenJwt.exp,
-            },
-          });
-        } else {
-          localStorage.removeItem("token");
-        }
-      } catch (error) {
-        console.error("Errore nel decodificare il token", error);
-        localStorage.removeItem("token");
-      }
-    } */
   }, []);
 
 
@@ -59,6 +35,8 @@ function App() {
         <Route path="/Products/Add" element={<ProductAdd />} />
         <Route path="/Account/Register" element={<Register />} />
         <Route path="/Account/Login" element={<Login />} />
+        <Route path="/Pet/:id" element={<PetMain />} />
+       {/*  <Route path="/MedicalExam/new/:id" element={<AddMedicalExam />} /> */}
       </Routes>
       {/*qui ci metto il footer*/}
     </>

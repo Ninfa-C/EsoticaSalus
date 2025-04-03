@@ -10,7 +10,7 @@ export const AutoLogout = () => {
     useEffect(() => {
         const checkToken = setInterval(() => {
             const token = localStorage.getItem('token');
-            console.log("CheckTimer")
+            //console.log("CheckTimer")
 
             if (token && isTokenExpired(token)) {
                 localStorage.removeItem('token');

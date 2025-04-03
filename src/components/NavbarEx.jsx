@@ -34,6 +34,11 @@ const logoutAccount =() =>{
                 <Link to="/Products/Add" className='nav-link'>Aggiungi Prodotto</Link>                
               </>
             }
+            {(profile.role === "Admin" || profile.role === "Veterinario") && 
+              <>
+                <Link to={`/Pet/${"7223E1ED-0659-45A1-9873-08DD71077D06"}`} className='nav-link'>PET SINGOLO</Link>                
+              </>
+            }
             {
               profile.role?
               <Nav.Link onClick={logoutAccount} className='ms-auto'>Logout</Nav.Link> :
