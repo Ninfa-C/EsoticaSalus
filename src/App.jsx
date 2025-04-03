@@ -12,6 +12,7 @@ import { AutoLogout } from "./components/Account/AutoLogout";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AutoLogin } from "./redux/actions/AccountApi";
+import PetList from "./components/Pets/PetList";
 //import { jwtDecode } from "jwt-decode";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/Products/Add" element={<ProductAdd />} />
         <Route path="/Account/Register" element={<Register />} />
         <Route path="/Account/Login" element={<Login />} />
+        <Route path="/Pet" element={<PetList />} />
       </Routes>
       {/*qui ci metto il footer*/}
     </>
