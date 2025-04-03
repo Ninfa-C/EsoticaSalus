@@ -5,18 +5,20 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
+const initialForm ={
+    name: "",
+    image: null,
+    price: 0,
+    isMed: false,
+    drawerId: "",
+    categoryId: "",
+    companyName: "",
+    address: "",
+    tel: ""
+}
+
 const ProductAdd = () => {
-    const [form, setForm] = useState({
-        name: "",
-        image: null,
-        price: 0,
-        isMed: false,
-        drawerId: "",
-        categoryId: "",
-        companyName: "",
-        address: "",
-        tel: ""
-    });
+    const [form, setForm] = useState(initialForm);
 
     const [cat, setCat] = useState([])
     const [drawer, setDrawer] = useState([])
@@ -40,6 +42,7 @@ const ProductAdd = () => {
         formData.append("Image", form.image)
         formData.append("isMed", form.isMed)
         AddProduct(formData)
+        setForm(initialForm)
     }
 
     useEffect(() => {
@@ -91,10 +94,8 @@ const ProductAdd = () => {
                         <Form.Label>State</Form.Label>
                         <Form.Select  value={cat.categoryId} onChange={(e) => setForm({ ...form, categoryId: e.target.value })}>
                             <option>Choose...</option>
-                            {cat && cat.map((item, i) => (
-                                <>
-                                    <option value={item.id} key={i}>{item.name}</option>
-                                </>
+                            {cat.length>0 && cat.map((item) => (
+                                    <option value={item.id} key={item.id}>{item.name}</option>
                             ))}
                         </Form.Select>
                     </Form.Group>
@@ -102,10 +103,8 @@ const ProductAdd = () => {
                         <Form.Label>State</Form.Label>
                         <Form.Select value={drawer.drawerId} onChange={(e) => setForm({ ...form, drawerId: e.target.value })}>
                             <option>Choose...</option>
-                            {drawer && drawer.map((item, i) => (
-                                <>
-                                    <option value={item.drawerId} key={i}>{item.name} - {item.position}</option>
-                                </>
+                            {drawer.length>0 && drawer.map((item) => (
+                                    <option value={item.drawerId} key={item.drawerId}>{item.name} - {item.position}</option>
                             ))}
                         </Form.Select>
                     </Form.Group>
