@@ -21,7 +21,6 @@ const PetList = () => {
             if (response.ok) {
                 const data = await response.json();
                 setPets(data.data);
-                console.log(data.data);
             } else {
                 throw new Error("Network response was not ok");
             }
