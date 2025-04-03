@@ -24,11 +24,12 @@ const logoutAccount =() =>{
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">EsoticaSalus</Navbar.Brand>
+        <Link to="/" className='navbar-brand'>EsoticaSalus</Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="w-100">
             <Link to="/" className='nav-link' >Home</Link>
+            <Link to="/Pet" className='nav-link' >Pet</Link>
             {(profile.role === "Admin" || profile.role === "Farmacista") && 
               <>
                   <Link to="/Pharmacy" className='nav-link'>Farmacia</Link>   

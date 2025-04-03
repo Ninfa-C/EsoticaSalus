@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { AddProduct, getData } from "../../redux/actions/ProductsApi";
 import Button from 'react-bootstrap/Button';

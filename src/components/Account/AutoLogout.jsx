@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { isTokenExpired } from './isTokenExpired';
 import { useNavigate } from 'react-router-dom';
@@ -10,8 +11,6 @@ export const AutoLogout = () => {
     useEffect(() => {
         const checkToken = setInterval(() => {
             const token = localStorage.getItem('token');
-            console.log("CheckTimer")
-
             if (token && isTokenExpired(token)) {
                 localStorage.removeItem('token');
                 dispatch({

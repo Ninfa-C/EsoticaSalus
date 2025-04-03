@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { AutoLogin } from "./redux/actions/AccountApi";
 import PharmaHomepage from "./components/Pharma/PharmaHomepage";
 import SendOrder from "./components/Pharma/SendOrder";
+import PetList from "./components/Pets/PetList";
 //import { jwtDecode } from "jwt-decode";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/Account/Register" element={<Register />} />
         <Route path="/Account/Login" element={<Login />} />
         <Route path="/Pharmacy/Order" element={<SendOrder/>} />
+        <Route path="/Pet" element={<PetList />} />
       </Routes>
       {/*qui ci metto il footer*/}
     </>
