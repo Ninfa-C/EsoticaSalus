@@ -66,12 +66,14 @@ export const SetToken = () =>{
     }
 }
 
-export const Logout = ()=>{
+export const Logout = (navigate)=>{
     return async (dispatch)=>{
         localStorage.removeItem("token")
         dispatch({
             type: "LOGOUT",
         });
+
+        navigate("/Account/Login");
     }
 }
 

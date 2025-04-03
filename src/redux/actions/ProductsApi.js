@@ -1,9 +1,9 @@
-import { Logout } from "./AccountApi";
+import ForceLogout from "../../components/ForceLogout";
 
 const CategoryUrl = "https://localhost:7054/api/Product/Categories";
 const DrawerUrl = "https://localhost:7054/api/Product/drawers";
 const getToken = JSON.parse(localStorage.getItem("token"));
-const authToken = `Bearer ${getToken.token}`;
+const authToken = getToken.token;
 
 export const getData = async (query) => {
     
@@ -23,11 +23,12 @@ export const getData = async (query) => {
             method: "GET",
             headers: {
                 "Content-Type": "application/json", 
-                "Authorization" : authToken          
+                "Authorization" : `Bearer ${authToken}`          
             },
         });
         if(response.status === 401){
-            Logout()
+            ForceLogout();
+            return;
         }
         else if(!response.ok) {
             throw new Error("Network response was not ok");
@@ -46,10 +47,14 @@ try {
     const response = await fetch (ProduUrl , {
         method : "POST",
         headers: {
-            Authorization: authToken,
+            Authorization: `Bearer ${authToken}` ,
         },
         body: form,
     });
+    if(response.status === 401){
+        ForceLogout();
+        return;
+    }
     if(response.ok){
         console.log(response.status)
     }
