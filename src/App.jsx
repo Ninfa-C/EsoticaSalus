@@ -12,6 +12,7 @@ import { AutoLogout } from "./components/Account/AutoLogout";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AutoLogin } from "./redux/actions/AccountApi";
+import PharmaHomepage from "./components/Pharma/PharmaHomepage";
 //import { jwtDecode } from "jwt-decode";
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
       <AutoLogout />
       <NavbarEx />
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Homepage />} />        
+        <Route path="/Pharmacy" element={<PharmaHomepage />} />
         <Route path="/Products/Add" element={<ProductAdd />} />
         <Route path="/Account/Register" element={<Register />} />
         <Route path="/Account/Login" element={<Login />} />

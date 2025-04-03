@@ -5,7 +5,8 @@ const initialState = {
     role : null,
     expire: null,
     isExpired : true,
-  }
+  },
+  Cart:{}
 }
 
 const mainReducer = (state = initialState, action) => {

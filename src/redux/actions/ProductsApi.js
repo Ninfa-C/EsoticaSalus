@@ -2,7 +2,7 @@ import { CheckToken, Logout } from "./AccountApi";
 
 const CategoryUrl = "https://localhost:7054/api/Product/Categories";
 const DrawerUrl = "https://localhost:7054/api/Product/drawers";
-
+const ProductUrl = "https://localhost:7054/api/Product";
 
 
 export const getData = (query) => {
@@ -15,6 +15,9 @@ export const getData = (query) => {
         case "drawer":
             url = DrawerUrl;
             break;
+            case undefined:
+                url = ProductUrl;
+                break;
         default:
             break;
     }
@@ -36,8 +39,8 @@ export const getData = (query) => {
 
         const data = await response.json();
         return data;
-    } catch  {
-        console.error(getToken2.token);
+    } catch (err)  {
+        console.error(err);
     }
 }
 };
