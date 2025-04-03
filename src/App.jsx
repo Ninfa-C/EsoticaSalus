@@ -20,32 +20,6 @@ function App() {
   
   useEffect(() => {
     dispatch(AutoLogin());
-    /* const token = localStorage.getItem("token");
-    if (token) {
-      try {
-        const getToken = JSON.parse(token);
-        const tokenJwt = jwtDecode(getToken.token);
-
-        const currentTime = Math.floor(Date.now() / 1000);
-        if (tokenJwt.exp > currentTime) {
-          // Il token è valido
-          dispatch({
-            type: "SAVE_PROFILE",
-            payload: {
-              name: tokenJwt.name,
-              email: tokenJwt.email,
-              role: tokenJwt.role,
-              expire: tokenJwt.exp,
-            },
-          });
-        } else {
-          localStorage.removeItem("token");
-        }
-      } catch (error) {
-        console.error("Errore nel decodificare il token", error);
-        localStorage.removeItem("token");
-      }
-    } */
   }, []);
 
 
