@@ -6,9 +6,12 @@ import { useDispatch } from 'react-redux';
 export const AutoLogout = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const isExpired = ((state) => state.profile.isExpired)
     useEffect(() => {
         const checkToken = setInterval(() => {
             const token = localStorage.getItem('token');
+            console.log("CheckTimer")
+
             if (token && isTokenExpired(token)) {
                 localStorage.removeItem('token');
                 dispatch({
@@ -19,5 +22,5 @@ export const AutoLogout = () => {
             //tempo in millisecondi sul quando vogiamo che esegua il controllo del token expirato
         }, 60000);
         return () => clearInterval(checkToken);
-    }, []);
+    }, [isExpired]);
 };

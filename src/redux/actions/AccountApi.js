@@ -1,3 +1,4 @@
+import { jwtDecode } from "jwt-decode";
 const Url = `https://localhost:7054/api/Account/register`;
 
 export const RegisterAccount = async (form) => {
@@ -21,7 +22,6 @@ export const RegisterAccount = async (form) => {
     }
 };
 
-import { jwtDecode } from "jwt-decode";
 
 
 const LoginUrl = `https://localhost:7054/api/Account/login`;
@@ -65,6 +65,7 @@ export const SetToken = () =>{
                 email: token.email,
                 role: token.role,
                 expire: token.exp,
+                isExpired : false,
             },
         });
     }
@@ -76,6 +77,14 @@ export const Logout = ()=>{
         dispatch({
             type: "LOGOUT",
         });
+    }
+}
+
+export const CheckToken = ()=> {
+    return async (dispatch) =>{
+        dispatch({
+            type: "CHECK_TOKEN",
+        })
     }
 }
 

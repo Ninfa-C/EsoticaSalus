@@ -1,12 +1,12 @@
-import { Logout } from "./AccountApi";
+import { CheckToken, Logout } from "./AccountApi";
 
 const CategoryUrl = "https://localhost:7054/api/Product/Categories";
 const DrawerUrl = "https://localhost:7054/api/Product/drawers";
-const getToken = JSON.parse(localStorage.getItem("token"));
-const authToken = getToken!=null? `Bearer ${getToken.token}` :  null;
 
 
-export const getData = async (query) => {
+
+export const getData = (query) => {
+    return async (dispatch) => {
     let url;
     switch (query) {
         case "category":
@@ -30,22 +30,27 @@ export const getData = async (query) => {
         if(!response.ok) {
             throw new Error("Network response was not ok");
         }
+        if(response.status === 401){
+            dispatch(CheckToken())
+        }
+
         const data = await response.json();
         return data;
     } catch  {
         console.error(getToken2.token);
     }
+}
 };
 
 const ProduUrl = "https://localhost:7054/api/Product";
 
 export const AddProduct = async (form) => {
-    
+const getToken = JSON.parse(localStorage.getItem("token"));
 try {
     const response = await fetch (ProduUrl , {
         method : "POST",
         headers: {
-            Authorization: authToken,
+            "Authorization": `Bearer ${getToken.token}`,
         },
         body: form,
     });
