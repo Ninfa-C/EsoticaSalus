@@ -5,18 +5,20 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
+const initialForm ={
+    name: "",
+    image: null,
+    price: 0,
+    isMed: false,
+    drawerId: "",
+    categoryId: "",
+    companyName: "",
+    address: "",
+    tel: ""
+}
+
 const ProductAdd = () => {
-    const [form, setForm] = useState({
-        name: "",
-        image: null,
-        price: 0,
-        isMed: false,
-        drawerId: "",
-        categoryId: "",
-        companyName: "",
-        address: "",
-        tel: ""
-    });
+    const [form, setForm] = useState(initialForm);
 
     const [cat, setCat] = useState([])
     const [drawer, setDrawer] = useState([])
@@ -40,6 +42,7 @@ const ProductAdd = () => {
         formData.append("Image", form.image)
         formData.append("isMed", form.isMed)
         AddProduct(formData)
+        setForm(initialForm)
     }
 
     useEffect(() => {
