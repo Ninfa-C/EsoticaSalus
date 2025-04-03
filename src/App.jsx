@@ -11,13 +11,16 @@ import ProductAdd from "./components/Products/ProductsAdd";
 import { AutoLogout } from "./components/Account/AutoLogout";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { jwtDecode } from "jwt-decode";
+import { AutoLogin } from "./redux/actions/AccountApi";
+//import { jwtDecode } from "jwt-decode";
 
 function App() {
   const dispatch = useDispatch();
 
+  
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    dispatch(AutoLogin());
+    /* const token = localStorage.getItem("token");
     if (token) {
       try {
         const getToken = JSON.parse(token);
@@ -42,8 +45,10 @@ function App() {
         console.error("Errore nel decodificare il token", error);
         localStorage.removeItem("token");
       }
-    }
+    } */
   }, []);
+
+
 
   return (
     <>
