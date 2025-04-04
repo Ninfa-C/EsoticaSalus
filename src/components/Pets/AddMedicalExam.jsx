@@ -48,9 +48,9 @@ const [isLoading, SetIsLoading] = useState(true)
         console.log("Error", error)
     }
  }
- const handleSubmit = (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault()
-    AddNewMedicExam(form)
+    await AddNewMedicExam(form)
     navigate(`/Pet/${form.petId}`, { state: { refresh: true } })
  }
 

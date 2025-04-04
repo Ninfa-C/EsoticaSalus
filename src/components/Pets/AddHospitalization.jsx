@@ -23,10 +23,10 @@ const AddHospitalization= () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[param])
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault()
-    AddNewHospitalization(form)
-    navigate(`/Pet/${form.petId}`)
+    await AddNewHospitalization(form)
+    navigate(`/Pet/${form.petId}`, { state: { refresh: true } })
   }
 
 
