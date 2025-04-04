@@ -64,9 +64,9 @@ const ChangePet = () => {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
             e.preventDefault();
-            PutPetAsync(param.id, PetInfo);
+            await PutPetAsync(param.id, PetInfo);
             setUpdate(!update);
             navigate("/Pet", { state: { update: update } });
         }

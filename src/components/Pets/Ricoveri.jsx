@@ -12,9 +12,9 @@ const Ricoveri = ({ hospit , update , setUpdate }) => {
 
 },[])
 
-const handleClick = (e)=>{
+const handleClick = async (e)=>{
   e.preventDefault()
-    EndRecovery(hospit.hospitalizationId)
+    await EndRecovery(hospit.hospitalizationId)
     setUpdate(!update)
     
 }
