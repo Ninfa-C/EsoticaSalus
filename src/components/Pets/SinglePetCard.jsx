@@ -8,8 +8,8 @@ const SinglePetCard = (props) => {
     const [update, setUpdate] = useState(false);
     const navigate = useNavigate();
 
-  const handleDelete = () => {
-    DeletePetAsync(props.pet.petId);
+  const handleDelete = async () => {
+    await DeletePetAsync(props.pet.petId);
     setUpdate(!update);
     navigate("/Pet", { state: { update: update } });
   }

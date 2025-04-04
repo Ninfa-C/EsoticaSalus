@@ -38,9 +38,9 @@ const AddPet = () => {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        AddPetAsync(form);
+        await AddPetAsync(form);
         setForm(initialForm);
         setUpdate(!update);
         navigate("/Pet", { state: { update: update } });
