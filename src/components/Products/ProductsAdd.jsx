@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const initialForm ={
     name: "",
@@ -26,6 +27,7 @@ const ProductAdd = () => {
     const [cat, setCat] = useState([])
     const [drawer, setDrawer] = useState([])
     const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate()
 
     const GetDatas = async () => {
         setIsLoading(true)
@@ -59,6 +61,7 @@ const ProductAdd = () => {
         formData.append("isMed", form.isMed)
         AddProduct(formData)
         setForm(initialForm)
+        navigate(`/Pharmacy/Manage`, { state: { refresh: true } })
     }
 
     useEffect(() => {

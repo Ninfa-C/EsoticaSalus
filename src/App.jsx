@@ -40,7 +40,7 @@ function App() {
       <NavbarEx />
       <Routes>
         <Route path="/" element={<Homepage />} />
-
+        
         <Route path="/Pharmacy" element={<ProtectedRoute children={<PharmaHomepage />} allowedRoles={['Admin', 'Farmacista']} />} />
         <Route path="/Products/Add" element={<ProtectedRoute children={<ProductAdd />} allowedRoles={['Admin', 'Farmacista']} />} />
         <Route path="/Products/Update/:id" element={<ProtectedRoute children={<UpdateProduct />} allowedRoles={['Admin', 'Farmacista']} />} />
