@@ -65,3 +65,25 @@ export const PutPetAsync = async (id, petInfo) => {
     console.log(err);
   }
 };
+
+const urlDelete = "https://localhost:7054/api/Pet/";
+
+export const DeletePetAsync = async (id) => {
+  const Token = JSON.parse(localStorage.getItem("token"));
+  try{
+    const response = await fetch(urlDelete + id, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${Token.token}`,
+      },
+    });
+    if (response.ok) {
+      console.log("Pet successfully deleted");
+    } else {
+      throw new Error("Error while deleting pet");
+    }
+  }
+  catch (err){
+    console.log(err);
+  }
+}
