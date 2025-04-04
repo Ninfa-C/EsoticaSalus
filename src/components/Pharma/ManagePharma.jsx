@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { PencilFill, Plus, PlusLg, Trash3 } from "react-bootstrap-icons";
+import { PencilFill, PlusLg, Trash3 } from "react-bootstrap-icons";
 import { DeleteProduct, getData } from "../../redux/actions";
 
 const ManagePharma = () => {
@@ -13,7 +13,10 @@ const ManagePharma = () => {
     const [filter, setFilter] = useState();
     const [update, setUpdate] = useState(false);
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const refresh = useSelector((state) => state.update)
+    //const location = useLocation()
+
 
     const GetDatas = async () => {
         setIsLoading(true);
@@ -40,13 +43,23 @@ const ManagePharma = () => {
 
     useEffect(() => {
         GetDatas();
-    }, [update]);
+        console.log(refresh)
+    }, [update, refresh]);
+
+    // useEffect(() => {
+    //     if (location.state?.refresh) {
+    //       setUpdate(prev => !prev); 
+    //       console.log(location.state?.refresh)
+    //     }
+    //   }, [location.state]);
 
     useEffect(() => {
-        if (location.state?.refresh) {
-          setUpdate(prev => !prev); 
-        }
-      }, [location.state]);
+        console.log("Prod updated:", prod);
+    }, [prod]);
+    
+    useEffect(() => {
+        console.log("Filtered products:", getFilteredProducts());
+    }, [prod, filter]);
 
     const getFilteredProducts = () => {
         if (!filter) return prod;
@@ -98,7 +111,7 @@ const ManagePharma = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {getFilteredProducts().map((product) => (
+                        {prod && getFilteredProducts().map((product) => (
                             <tr key={product.id}>
                                 <td>{product.name}</td>
                                 <td>{product.categoryName}</td>

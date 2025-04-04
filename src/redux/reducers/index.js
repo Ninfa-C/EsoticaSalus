@@ -7,6 +7,7 @@ const initialState = {
     isExpired: true,
   },
   cart: [],
+  update: false
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -52,7 +53,13 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         cart: [...state.cart, { ...action.payload, quantity: 1 }]
       };}
-
+      
+      case "UPDATE": 
+      return {
+        ...state,
+        update: !state.update,
+      };
+    
     default:
       return state;
   }

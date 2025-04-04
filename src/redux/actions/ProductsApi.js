@@ -34,8 +34,7 @@ export const getData = (query) => {
       }
       if (response.status === 401) {
         dispatch(CheckToken());
-      }
-
+      }      
       const data = await response.json();
       return data;
     } catch (err) {
