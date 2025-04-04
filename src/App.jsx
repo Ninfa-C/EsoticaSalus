@@ -19,6 +19,8 @@ import PetList from "./components/Pets/PetList";
 import PetMain from "./components/Pets/PetMain";
 import AddMedicalExam from "./components/Pets/AddMedicalExam";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ManagePharma from "./components/Pharma/ManagePharma";
+import UpdateProduct from "./components/Products/UpdateProduct";
 
 
 function App() {
@@ -38,7 +40,9 @@ function App() {
 
         <Route path="/Pharmacy" element={<ProtectedRoute children={<PharmaHomepage />} allowedRoles={['Admin', 'Farmacista']} />} />
         <Route path="/Products/Add" element={<ProtectedRoute children={<ProductAdd />} allowedRoles={['Admin', 'Farmacista']} />} />
+        <Route path="/Products/Update/:id" element={<ProtectedRoute children={<UpdateProduct />} allowedRoles={['Admin', 'Farmacista']} />} />
         <Route path="/Pharmacy/Order" element={<ProtectedRoute children={<SendOrder />} allowedRoles={['Admin', 'Farmacista']} />} />
+        <Route path="/Pharmacy/Manage" element={<ProtectedRoute children={<ManagePharma />} allowedRoles={['Admin', 'Farmacista']} />} />
 
         <Route path="/Account/Register" element={<Register />} />
         <Route path="/Account/Login" element={<Login />} />

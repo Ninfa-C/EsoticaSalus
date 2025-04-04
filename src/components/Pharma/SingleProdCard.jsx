@@ -11,7 +11,7 @@ const dispatch  = useDispatch()
       <img 
       src={
         product.image 
-          ? `http://localhost:5250/${product.image.replace(/\\/g, '/')}`
+          ? `https://localhost:7054/${product.image.replace(/\\/g, '/')}`
           : "https://img.freepik.com/premium-vector/cat-box-page-file-found-connection-error-flat-outline-vector-white_705714-496.jpg"
       } 
        className="card-img-top" 

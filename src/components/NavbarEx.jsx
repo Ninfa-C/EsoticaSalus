@@ -42,8 +42,12 @@ function NavbarEx() {
             }
             <NavDropdown title={profile.role ? "Account" : "Auth"} id="basic-nav-dropdown" className="ms-auto">
               {profile.role ? (
+                <>
                 <NavDropdown.Item onClick={logoutAccount}>Logout</NavDropdown.Item>
-              ) : (
+                {(profile.role === "Farmacista" || profile.role === "Admin") &&  <NavDropdown.Item as={Link} to="/Pharmacy/Manage" >Gestione Farmacia</NavDropdown.Item>}
+                </>
+              )               
+              : (
                 <>
                   <NavDropdown.Item as={Link} to="/Account/Register">Register</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/Account/Login">Login</NavDropdown.Item>

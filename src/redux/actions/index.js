@@ -1,1 +1,3 @@
-export * from '../redux/actions/AccountApi';
+export * from '../actions/AccountApi';
+export * from '../actions/ProductsApi';
+export * from '../actions/PharmacyApi';
