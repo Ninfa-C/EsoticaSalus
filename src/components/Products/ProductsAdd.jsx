@@ -47,7 +47,7 @@ const ProductAdd = () => {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         const formData = new FormData()
         formData.append("Name", form.name)
@@ -59,9 +59,11 @@ const ProductAdd = () => {
         formData.append("DrawerId", form.drawerId)
         formData.append("Image", form.image)
         formData.append("isMed", form.isMed)
-        AddProduct(formData)
+        await AddProduct(formData)
         setForm(initialForm)
-        navigate(`/Pharmacy/Manage`, { state: { refresh: true } })
+        //navigate(`/Pharmacy/Manage`, { state: { refresh: true } })
+        dispatch({type : "UPDATE"})
+        navigate(`/Pharmacy/Manage`)
     }
 
     useEffect(() => {

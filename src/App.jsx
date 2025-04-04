@@ -23,6 +23,7 @@ import ManagePharma from "./components/Pharma/ManagePharma";
 import UpdateProduct from "./components/Products/UpdateProduct";
 import AddPet from "./components/Pets/AddPet";
 import AddHospitalization from "./components/Pets/AddHospitalization";
+import ChangePet from "./components/Pets/ChangePet";
 import MedicalExamDetail from "./components/Pets/MedicalExamDetail";
 
 
@@ -57,6 +58,7 @@ function App() {
         <Route path="/MedicalExam/new/:id" element={<ProtectedRoute children={<AddMedicalExam />} allowedRoles={['Admin', 'Veterinario']} />} />
         <Route path="/MedicalExam/:id" element={<ProtectedRoute children={<MedicalExamDetail /> } allowedRoles={['Admin', 'Veterinario']} />}  />
         <Route path="/Hospitalization/new/:id" element={<ProtectedRoute children={<AddHospitalization /> } allowedRoles={['Admin', 'Veterinario']} />}  />
+        <Route path="/Pet/Change/:id" element={<ProtectedRoute children={<ChangePet />} allowedRoles={['Admin', 'Veterinario']} />} />
 
       </Routes>
       {/*qui ci metto il footer*/}

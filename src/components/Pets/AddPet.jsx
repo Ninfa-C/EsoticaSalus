@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { AddPetAsync, getRaces } from "../../redux/actions/PetsApi";
+import { useNavigate } from "react-router-dom";
 
 const initialForm = {
     name: "",
@@ -19,6 +20,9 @@ const AddPet = () => {
     const [form, setForm] = useState(initialForm);
     const [races, setRaces] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [update, setUpdate] = useState(false);
+    const navigate = useNavigate();
+
 
     const GetData = async () => {
         setIsLoading(true)
@@ -38,6 +42,8 @@ const AddPet = () => {
         e.preventDefault();
         AddPetAsync(form);
         setForm(initialForm);
+        setUpdate(!update);
+        navigate("/Pet", { state: { update: update } });
     }
 
     useEffect(() => {
