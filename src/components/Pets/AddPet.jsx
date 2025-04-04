@@ -105,7 +105,7 @@ const AddPet = () => {
 
                     <Form.Group as={Col}>
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="text" placeholder="Email..." value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                        <Form.Control type="email" placeholder="Email..." value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
                     </Form.Group>
                 </Row>
                 <Button variant="outline-success" type="submit" className="mt-3">Aggiungi</Button>
