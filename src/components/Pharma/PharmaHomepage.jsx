@@ -8,6 +8,8 @@ const PharmaHomepage = () => {
   const [cat, setCat] = useState([]);
   const [prod, setProd] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [filteredProd, setFilteredProd] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const dispatch = useDispatch();
 
   const GetDatas = async () => {
@@ -27,6 +29,19 @@ const PharmaHomepage = () => {
     }
   };
 
+
+  const filterByCategory = (categoryId) => {
+    if (selectedCategory === categoryId) {
+      setSelectedCategory(null);
+      setFilteredProd(prod);
+    } else {
+      setSelectedCategory(categoryId);
+      {console.log(selectedCategory , categoryId)}
+      const filtered = prod.filter((item) => item.categoryName === categoryId);
+      setFilteredProd(filtered);
+    }
+  };
+
   useEffect(() => {
     GetDatas();
   }, []);
@@ -41,19 +56,26 @@ const PharmaHomepage = () => {
       <div className="d-flex gap-2 flex-wrap my-4">
         {cat &&
           cat.map((category) => (
-            <button key={category.id} className="btn btn-success">
+            <button 
+              key={category.id} 
+              className={`btn ${selectedCategory === category.name ? 'btn-success' : 'btn-outline-success'}`}
+              onClick={() => filterByCategory(category.name)}
+            >
               {category.name}
             </button>
           ))}
       </div>
       <section>
-        {console.log(prod)}
-        <h2 className="h4 mb-3">Tutti i prodotti</h2>
-        {prod.length > 0 && prod ? (
-          <AllProducts products={prod} />
+        <h2 className="h4 mb-3">
+          {selectedCategory 
+            ? `Prodotti della categoria: ${cat.find(c => c.id === selectedCategory)?.name}`
+            : 'Tutti i prodotti'}
+        </h2>
+        {filteredProd.length > 0 ? (
+          <AllProducts products={filteredProd} />
         ) : (
           <div className="alert alert-info">
-            Nessun prodotto disponibile al momento
+            Nessun prodotto disponibile {selectedCategory ? 'in questa categoria' : 'al momento'}
           </div>
         )}
       </section>
