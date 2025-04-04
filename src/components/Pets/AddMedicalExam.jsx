@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import { AddNewMedicExam } from "../../redux/actions/ProductsApi";
+import { AddNewMedicExam } from "../../redux/actions/ClinicApi";
 
 const initialForm = {
     examDate : "",

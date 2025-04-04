@@ -18,6 +18,8 @@ import PetList from "./components/Pets/PetList";
 //import { jwtDecode } from "jwt-decode";
 import PetMain from "./components/Pets/PetMain";
 import AddMedicalExam from "./components/Pets/AddMedicalExam";
+import AddHospitalization from "./components/Pets/AddHospitalization";
+
 
 
 function App() {
@@ -44,7 +46,8 @@ function App() {
         <Route path="/Pharmacy/Order" element={<SendOrder/>} />
         <Route path="/Pet" element={<PetList />} />
         <Route path="/Pet/:id" element={<PetMain />} />
-         <Route path="/MedicalExam/new/:id" element={<AddMedicalExam />} />
+        <Route path="/MedicalExam/new/:id" element={<AddMedicalExam />} />
+        <Route path="/Hospitalization/new/:id" element={<AddHospitalization />} />
       </Routes>
       {/*qui ci metto il footer*/}
     </>

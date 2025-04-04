@@ -6,6 +6,7 @@ import Ricoveri from "./Ricoveri";
 
 const PetMain = () => {
   const [isLoading, SetIsLoading] = useState(true);
+  const [update,setUpdate] = useState(true)
   const param = useParams();
   const [PetInfo, SetPetInfo] = useState({});
 
@@ -15,7 +16,7 @@ const PetMain = () => {
       GetPet();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [param]);
+  }, [param, update]);
 
   const GetPet = async () => {
     const Url = `https://localhost:7054/api/Pet/${param.id}`;
@@ -92,7 +93,7 @@ const PetMain = () => {
               <Col xs={6}>
               <div className="d-flex justify-content-between">
                 <h4 className="m-0">Visite Mediche</h4>
-                <Link to={`/MedicalExam/new/${PetInfo.petId}`} className='btn btn-sm btn-primary'>Nuova Visita</Link>  
+                <Link to={`/MedicalExam/new/${PetInfo.petId}`} className='btn btn-sm btn-primary'>Nuova Visita</Link>
               </div>
                 <div className="mt-2">
                   {PetInfo.petExams.length > 0 && (
@@ -121,7 +122,7 @@ const PetMain = () => {
                   {PetInfo.petHospitalization.length > 0 && (
                     <>
                       {PetInfo.petHospitalization.map((item, index) => {
-                        return <Ricoveri hospit={item} key={index} />;
+                        return <Ricoveri hospit={item} update={update} setUpdate={setUpdate}  key={index} />;
                       })}
                     </>
                   )}

@@ -13,7 +13,7 @@ const SinglePetCard = (props) => {
           Razza: {props.pet.race}<br /> 
           Colore: {props.pet.color}<br /> 
           Data di nascita: {props.pet.birthDate}<br />
-          Padrone: {props.pet.owner.name} {props.pet.owner.surname}
+          Padrone: {props.pet.owner ? `${props.pet.owner.name} ${props.pet.owner.surname}` : `Nessun padrone registrato`}
         </Card.Text>
         <Button variant="primary" onClick={() => (navigate(`/Pet/${props.pet.petId}`))} >Dettagli</Button>
       </Card.Body>
