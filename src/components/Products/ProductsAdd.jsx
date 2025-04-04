@@ -27,7 +27,6 @@ const ProductAdd = () => {
     const [cat, setCat] = useState([])
     const [drawer, setDrawer] = useState([])
     const [isLoading, setIsLoading] = useState(true);
-    const [refresh, setRefresh] = useState(false)
     const navigate = useNavigate()
 
     const GetDatas = async () => {
@@ -62,8 +61,7 @@ const ProductAdd = () => {
         formData.append("isMed", form.isMed)
         AddProduct(formData)
         setForm(initialForm)
-        setRefresh(!refresh)
-        navigate("/Pharmacy/Manage", { state: {refresh: refresh}})
+        navigate(`/Pharmacy/Manage`, { state: { refresh: true } })
     }
 
     useEffect(() => {

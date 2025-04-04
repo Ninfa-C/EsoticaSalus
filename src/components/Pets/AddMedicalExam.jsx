@@ -51,7 +51,7 @@ const [isLoading, SetIsLoading] = useState(true)
  const handleSubmit = (e) => {
     e.preventDefault()
     AddNewMedicExam(form)
-    navigate(`/Pet/${form.petId}`)
+    navigate(`/Pet/${form.petId}`, { state: { refresh: true } })
  }
 
 

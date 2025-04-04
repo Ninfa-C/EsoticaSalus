@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Alert, Button, Card, Col, Container, Row } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import VisiteMediche from "./VisiteMediche";
 import Ricoveri from "./Ricoveri";
 
@@ -8,6 +8,7 @@ const PetMain = () => {
   const [isLoading, SetIsLoading] = useState(true);
   const [update,setUpdate] = useState(true)
   const param = useParams();
+  const location = useLocation()
   const [PetInfo, SetPetInfo] = useState({});
 
   useEffect(() => {
@@ -17,6 +18,14 @@ const PetMain = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [param, update]);
+
+  // forza il re-fetch
+  useEffect(() => {
+    if (location.state?.refresh) {
+      setUpdate(prev => !prev); 
+    }
+  }, [location.state]);
+
 
   const GetPet = async () => {
     const Url = `https://localhost:7054/api/Pet/${param.id}`;

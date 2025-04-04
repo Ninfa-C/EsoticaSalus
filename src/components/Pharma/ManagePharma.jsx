@@ -47,6 +47,12 @@ const ManagePharma = () => {
     }, [update, refresh]);
     
 
+    useEffect(() => {
+        if (location.state?.refresh) {
+          setUpdate(prev => !prev); 
+        }
+      }, [location.state]);
+
     const getFilteredProducts = () => {
         if (!filter) return prod;
         const filterL = filter.toLowerCase();
