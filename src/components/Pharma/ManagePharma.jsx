@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { PencilFill, Plus, PlusLg, Trash3 } from "react-bootstrap-icons";
 import { DeleteProduct, getData } from "../../redux/actions";
 
@@ -13,7 +13,8 @@ const ManagePharma = () => {
     const [filter, setFilter] = useState();
     const [update, setUpdate] = useState(false);
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const state = useLocation();
 
     const GetDatas = async () => {
         setIsLoading(true);
@@ -41,6 +42,9 @@ const ManagePharma = () => {
     useEffect(() => {
         GetDatas();
     }, [update]);
+    
+
+
 
     const getFilteredProducts = () => {
         if (!filter) return prod;
@@ -50,6 +54,7 @@ const ManagePharma = () => {
 
     return (
         <div className="container">
+            {console.log(state)}
             <h1 className="mb-3">Gestione Farmacia</h1>
             <div className="d-flex justify-content-between">                
                 <div className="d-flex gap-3 align-items-center mb-3">
