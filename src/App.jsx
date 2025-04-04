@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AutoLogin } from "./redux/actions/AccountApi";
 import PetMain from "./components/Pets/PetMain";
+import AddMedicalExam from "./components/Pets/AddMedicalExam";
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
         <Route path="/Account/Register" element={<Register />} />
         <Route path="/Account/Login" element={<Login />} />
         <Route path="/Pet/:id" element={<PetMain />} />
-       {/*  <Route path="/MedicalExam/new/:id" element={<AddMedicalExam />} /> */}
+         <Route path="/MedicalExam/new/:id" element={<AddMedicalExam />} />
       </Routes>
       {/*qui ci metto il footer*/}
     </>
