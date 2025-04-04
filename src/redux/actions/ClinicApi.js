@@ -58,4 +58,3 @@ export const EndRecovery = async (id) => {
         console.log(error);
     }
 }
-
