@@ -6,7 +6,9 @@ import { AddNewMedicExam } from "../../redux/actions/ClinicApi";
 const initialForm = {
     examDate : "",
     petId : "",
-    vetId : "", 
+    vetId : "",
+    diagnosis: "",
+    treatment :"",
 } 
 
 const AddMedicalExam = () => {
@@ -70,6 +72,7 @@ const [isLoading, SetIsLoading] = useState(true)
         <Form.Control type="date" value={form.examDate} onChange={(e)=> setForm({...form, examDate: e.target.value})}/>
       </Form.Group>
       <Form.Group className="mb-3" >
+      <Form.Label>Medico</Form.Label>
       <Form.Select value={vetList.vetId} onChange={(e) => setForm({ ...form, vetId: e.target.value })}>
                             <option>Choose...</option>
                             {vetList.length>0 && vetList.map((item, index) => (
@@ -77,6 +80,15 @@ const [isLoading, SetIsLoading] = useState(true)
                             ))}
                         </Form.Select>
       </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Diagnosi</Form.Label>
+        <Form.Control type="text" placeholder="Diagnosi" value={form.diagnosis} onChange={(e)=> setForm({...form, diagnosis: e.target.value})}/>
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Trattamento</Form.Label>
+        <Form.Control as="textarea" rows={3} value={form.treatment} onChange={(e)=> setForm({...form, treatment: e.target.value})}/>
+      </Form.Group>
+
       <Button variant="primary" type="submit">
         Aggiungi visita
       </Button>
