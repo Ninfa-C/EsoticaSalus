@@ -39,7 +39,7 @@ const logoutAccount =() =>{
             }
             {(profile.role === "Admin" || profile.role === "Veterinario") && 
               <>
-                <Link to={`/Pet/${"7223E1ED-0659-45A1-9873-08DD71077D06"}`} className='nav-link'>PET SINGOLO</Link>                
+                {/* <Link to={`/Pet/${"7223E1ED-0659-45A1-9873-08DD71077D06"}`} className='nav-link'>PET SINGOLO</Link>                 */}
               </>
             }
             {

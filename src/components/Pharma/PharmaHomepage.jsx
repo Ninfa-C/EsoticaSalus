@@ -26,6 +26,7 @@ const PharmaHomepage = () => {
       setIsLoading(false);
     }
   };
+
   useEffect(() => {
     GetDatas();
   }, []);
