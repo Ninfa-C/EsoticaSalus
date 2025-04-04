@@ -75,8 +75,8 @@ export const AddNewMedicExam = async (form) => {
             body: JSON.stringify(form),
         });
         if (!response.ok) {
-          let data = await response.json()
-          console.log(data)
+          throw new Error("error")
+        
         }
       } catch (err) {
         console.log(err);

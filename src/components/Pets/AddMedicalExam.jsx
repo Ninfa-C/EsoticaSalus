@@ -23,6 +23,7 @@ const [isLoading, SetIsLoading] = useState(true)
         setForm({...form, petId: param.id})
         getVets()
       }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  },[param])
 
  const getVets = async () => {
@@ -49,10 +50,8 @@ const [isLoading, SetIsLoading] = useState(true)
  }
  const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(form)
-    
     AddNewMedicExam(form)
-    //navigate(`/Pet/${form.petId}`)
+    navigate(`/Pet/${form.petId}`)
  }
 
 
