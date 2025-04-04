@@ -18,33 +18,35 @@ import PetList from "./components/Pets/PetList";
 //import { jwtDecode } from "jwt-decode";
 import PetMain from "./components/Pets/PetMain";
 import AddMedicalExam from "./components/Pets/AddMedicalExam";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 
 function App() {
   const dispatch = useDispatch();
 
-  
   useEffect(() => {
     //FUNZIONE RICHIAMATA IN ACCOUNTAPI.Js PER LA GESTIONE DELL'AUTOLOGIN
     dispatch(AutoLogin());
   }, []);
-
-
 
   return (
     <>
       <AutoLogout />
       <NavbarEx />
       <Routes>
-        <Route path="/" element={<Homepage />} />        
-        <Route path="/Pharmacy" element={<PharmaHomepage />} />
-        <Route path="/Products/Add" element={<ProductAdd />} />
+        <Route path="/" element={<Homepage />} />
+
+        <Route path="/Pharmacy" element={<ProtectedRoute children={<PharmaHomepage />} allowedRoles={['Admin', 'Farmacista']} />} />
+        <Route path="/Products/Add" element={<ProtectedRoute children={<ProductAdd />} allowedRoles={['Admin', 'Farmacista']} />} />
+        <Route path="/Pharmacy/Order" element={<ProtectedRoute children={<SendOrder />} allowedRoles={['Admin', 'Farmacista']} />} />
+
         <Route path="/Account/Register" element={<Register />} />
         <Route path="/Account/Login" element={<Login />} />
-        <Route path="/Pharmacy/Order" element={<SendOrder/>} />
-        <Route path="/Pet" element={<PetList />} />
-        <Route path="/Pet/:id" element={<PetMain />} />
-         <Route path="/MedicalExam/new/:id" element={<AddMedicalExam />} />
+
+        <Route path="/Pet" element={<ProtectedRoute children={<PetList />} allowedRoles={['Admin', 'Veterinario']} />} />
+        <Route path="/Pet/:id" element={<ProtectedRoute children={<PetMain />} allowedRoles={['Admin', 'Veterinario']} />} />
+        <Route path="/MedicalExam/new/:id" element={<ProtectedRoute children={<AddMedicalExam />} allowedRoles={['Admin', 'Veterinario']} />} />
+
       </Routes>
       {/*qui ci metto il footer*/}
     </>

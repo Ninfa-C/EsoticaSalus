@@ -13,10 +13,10 @@ function NavbarEx() {
   const dispatch = useDispatch()
   const navigateTo = useNavigate()
 
-const logoutAccount =() =>{
-  dispatch(Logout())
-  navigateTo("/Account/Login")
-}
+  const logoutAccount = () => {
+    dispatch(Logout())
+    navigateTo("/Account/Login")
+  }
 
   useEffect(() => {
   }, [profile])
@@ -29,30 +29,27 @@ const logoutAccount =() =>{
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="w-100">
             <Link to="/" className='nav-link' >Home</Link>
-            <Link to="/Pet" className='nav-link' >Pet</Link>
-            {(profile.role === "Admin" || profile.role === "Farmacista") && 
+            {(profile.role === "Admin" || profile.role === "Veterinario") &&
               <>
-                  <Link to="/Pharmacy" className='nav-link'>Farmacia</Link>   
-                  <Link to="/Pharmacy/Order" className='nav-link'>Conferma ordine</Link>  
-                  {/*<Link to="/Products/Add" className='nav-link'>Aggiungi Prodotto</Link>*/}
+                <Link to="/Pet" className='nav-link' >Pet</Link>
+              </>}
+            {(profile.role === "Admin" || profile.role === "Farmacista") &&
+              <>
+                <Link to="/Pharmacy" className='nav-link'>Farmacia</Link>
+                <Link to="/Pharmacy/Order" className='nav-link'>Conferma ordine</Link>
+                {/*<Link to="/Products/Add" className='nav-link'>Aggiungi Prodotto</Link>*/}
               </>
             }
-            {(profile.role === "Admin" || profile.role === "Veterinario") && 
-              <>
-                {/* <Link to={`/Pet/${"7223E1ED-0659-45A1-9873-08DD71077D06"}`} className='nav-link'>PET SINGOLO</Link>                 */}
-              </>
-            }
-            {
-              profile.role?
-              <Nav.Link onClick={logoutAccount} className='ms-auto'>Logout</Nav.Link> :
-              <>
-              <div className=' d-flex ms-auto'>
-                <Link to="/Account/Register" className='nav-link'>Register</Link>
-                <Link to="/Account/Login" className='nav-link'>Login</Link>
-              </div>
-              </>
-            }
-
+            <NavDropdown title={profile.role ? "Account" : "Auth"} id="basic-nav-dropdown" className="ms-auto">
+              {profile.role ? (
+                <NavDropdown.Item onClick={logoutAccount}>Logout</NavDropdown.Item>
+              ) : (
+                <>
+                  <NavDropdown.Item as={Link} to="/Account/Register">Register</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Account/Login">Login</NavDropdown.Item>
+                </>
+              )}
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
