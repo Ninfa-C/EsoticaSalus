@@ -26,7 +26,7 @@ const AddHospitalization= () => {
   const handleSubmit = (e) =>{
     e.preventDefault()
     AddNewHospitalization(form)
-    navigate(`/Pet/${form.petId}`)
+    navigate(`/Pet/${form.petId}`, { state: { refresh: true } })
   }
 
 

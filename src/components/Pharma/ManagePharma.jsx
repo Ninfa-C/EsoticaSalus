@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { PencilFill, Plus, PlusLg, Trash3 } from "react-bootstrap-icons";
 import { DeleteProduct, getData } from "../../redux/actions";
 
@@ -14,6 +14,7 @@ const ManagePharma = () => {
     const [update, setUpdate] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate()
+    const location = useLocation()
 
     const GetDatas = async () => {
         setIsLoading(true);
