@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SinglePetCard from "./SinglePetCard";
 import { Row, Col, Container, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const PetList = () => {
     const [pets, setPets] = useState([]);
@@ -38,7 +39,8 @@ const PetList = () => {
     }, []);
     return (
             <Container className="mt-3" >
-                <Form.Control type="text" placeholder="Microchip Number..." value={search} onChange={(e) => setSearch(e.target.value)} />
+                <Link className="btn btn-primary" to="/Pet/Add">Aggiungi animale</Link>
+                <Form.Control className="mt-3" type="text" placeholder="Microchip Number..." value={search} onChange={(e) => setSearch(e.target.value)} />
                 <Row className="mt-3">
                     <Col xs={3}>
                         {pets && filteredPets.map((pet) => <SinglePetCard pet={pet} key={pet.petId} />)}

@@ -13,7 +13,8 @@ const SinglePetCard = (props) => {
           Razza: {props.pet.race}<br /> 
           Colore: {props.pet.color}<br /> 
           Data di nascita: {props.pet.birthDate}<br />
-          Padrone: {props.pet.owner.name} {props.pet.owner.surname}
+          Padrone: {props.pet.owner.name} {props.pet.owner.surname}<br />
+          Microchip: {props.pet.microchip}
         </Card.Text>
         <Button variant="primary" onClick={() => (navigate(`/Pet/${props.pet.petId}`))} >Dettagli</Button>
       </Card.Body>

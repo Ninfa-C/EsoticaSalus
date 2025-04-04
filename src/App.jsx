@@ -19,6 +19,7 @@ import PetList from "./components/Pets/PetList";
 import PetMain from "./components/Pets/PetMain";
 import AddMedicalExam from "./components/Pets/AddMedicalExam";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AddPet from "./components/Pets/AddPet";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path="/Account/Login" element={<Login />} />
 
         <Route path="/Pet" element={<ProtectedRoute children={<PetList />} allowedRoles={['Admin', 'Veterinario']} />} />
+        <Route path="/Pet/Add" element={<ProtectedRoute children={<AddPet />} allowedRoles={['Admin', 'Veterinario']} />} />
         <Route path="/Pet/:id" element={<ProtectedRoute children={<PetMain />} allowedRoles={['Admin', 'Veterinario']} />} />
         <Route path="/MedicalExam/new/:id" element={<ProtectedRoute children={<AddMedicalExam />} allowedRoles={['Admin', 'Veterinario']} />} />
 
