@@ -41,10 +41,8 @@ const PetList = () => {
             <Container className="mt-3" >
                 <Link className="btn btn-primary" to="/Pet/Add">Aggiungi animale</Link>
                 <Form.Control className="mt-3" type="text" placeholder="Microchip Number..." value={search} onChange={(e) => setSearch(e.target.value)} />
-                <Row className="mt-3">
-                    <Col xs={3}>
-                        {pets && filteredPets.map((pet) => <SinglePetCard pet={pet} key={pet.petId} />)}
-                    </Col>
+                <Row className="mt-3 justify-content-evenly">
+                        {pets && filteredPets.map((pet) => <SinglePetCard as={Col} pet={pet} key={pet.petId} />)}
                 </Row>
             </Container>
     );
