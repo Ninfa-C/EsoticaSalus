@@ -15,6 +15,8 @@ const ManagePharma = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const state = useLocation();
+    const {refresh} = state.state || {}
+ 
 
     const GetDatas = async () => {
         setIsLoading(true);
@@ -39,12 +41,11 @@ const ManagePharma = () => {
         }
     }
 
+
     useEffect(() => {
         GetDatas();
-    }, [update]);
+    }, [update, refresh]);
     
-
-
 
     const getFilteredProducts = () => {
         if (!filter) return prod;
@@ -54,7 +55,7 @@ const ManagePharma = () => {
 
     return (
         <div className="container">
-            {console.log(state)}
+           
             <h1 className="mb-3">Gestione Farmacia</h1>
             <div className="d-flex justify-content-between">                
                 <div className="d-flex gap-3 align-items-center mb-3">
