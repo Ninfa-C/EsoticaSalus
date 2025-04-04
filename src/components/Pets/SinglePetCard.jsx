@@ -1,12 +1,21 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
+import { DeletePetAsync } from '../../redux/actions/PetsApi';
+import { useState } from 'react';
 
 const SinglePetCard = (props) => {
+    const [update, setUpdate] = useState(false);
     const navigate = useNavigate();
 
+  const handleDelete = () => {
+    DeletePetAsync(props.pet.petId);
+    setUpdate(!update);
+    navigate("/Pet", { state: { update: update } });
+  }
+
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '25rem' }}>
       <Card.Body>
         <Card.Title>{props.pet.name}</Card.Title>
         <Card.Text>
@@ -17,7 +26,8 @@ const SinglePetCard = (props) => {
           Microchip: {props.pet.microchip}
         </Card.Text>
         <Button variant="primary" onClick={() => (navigate(`/Pet/${props.pet.petId}`))} >Dettagli</Button>
-        <Button variant="warning" className="ms-2" onClick={() => navigate(`/Pet/Change/${props.pet.petId}`)}>Modifica</Button>
+        <Button variant="warning" className='ms-2' onClick={() => navigate(`/Pet/Change/${props.pet.petId}`)}>Modifica</Button>
+        <Button variant="danger" className='ms-2' onClick={() => handleDelete()}>Elimina</Button>
       </Card.Body>
     </Card>
   );
