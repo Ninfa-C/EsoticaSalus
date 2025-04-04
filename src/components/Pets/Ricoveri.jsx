@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Card } from "react-bootstrap";
 import { EndRecovery } from "../../redux/actions/ClinicApi";
 import { useEffect} from "react";
