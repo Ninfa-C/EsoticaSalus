@@ -17,6 +17,7 @@ const SinglePetCard = (props) => {
           Microchip: {props.pet.microchip}
         </Card.Text>
         <Button variant="primary" onClick={() => (navigate(`/Pet/${props.pet.petId}`))} >Dettagli</Button>
+        <Button variant="warning" className="ms-2" onClick={() => navigate(`/Pet/Change/${props.pet.petId}`)}>Modifica</Button>
       </Card.Body>
     </Card>
   );
