@@ -22,6 +22,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ManagePharma from "./components/Pharma/ManagePharma";
 import UpdateProduct from "./components/Products/UpdateProduct";
 import AddPet from "./components/Pets/AddPet";
+import AddHospitalization from "./components/Pets/AddHospitalization";
+
 
 
 function App() {
@@ -52,7 +54,7 @@ function App() {
         <Route path="/Pet/Add" element={<ProtectedRoute children={<AddPet />} allowedRoles={['Admin', 'Veterinario']} />} />
         <Route path="/Pet/:id" element={<ProtectedRoute children={<PetMain />} allowedRoles={['Admin', 'Veterinario']} />} />
         <Route path="/MedicalExam/new/:id" element={<ProtectedRoute children={<AddMedicalExam />} allowedRoles={['Admin', 'Veterinario']} />} />
-
+        <Route path="/Hospitalization/new/:id" element={<ProtectedRoute children={<AddHospitalization /> } allowedRoles={['Admin', 'Veterinario']} />}  />
       </Routes>
       {/*qui ci metto il footer*/}
     </>
